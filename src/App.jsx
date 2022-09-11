@@ -1,10 +1,20 @@
 import React from "react";
+import { 
+  BrowserRouter as Router, 
+  Route,
+  Routes,
+  Navigate
+} from 'react-router-dom';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
-    <div className="App">
-     <h1>Guessing States</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={ <HomePage /> }/>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
 
