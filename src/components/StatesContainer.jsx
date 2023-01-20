@@ -26,11 +26,11 @@ const StatesContainer = () => {
     useEffect( () => {
         dispatch(getStates());
     },[dispatch]);
-
+    console.log(states);
   return (
     <StyledDiv>
         { states.map( v => {
-            return <StyledParagraph key={v.id}> {v.title} </StyledParagraph>
+            return <StyledParagraph key={v.id}> {v.name} </StyledParagraph>
         }) }
     </StyledDiv>
   )

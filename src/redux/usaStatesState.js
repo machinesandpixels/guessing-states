@@ -4,8 +4,8 @@ import axios from "axios";
 export const getStates = createAsyncThunk(
   'usaStates/getStates',
   async () => {
-  const { data } = await axios.get('https://jsonplaceholder.typicode.com/todos');
-    return data;
+  const { data } = await axios.get('data/usaStates.json');
+  return data;
  }
 );
 
