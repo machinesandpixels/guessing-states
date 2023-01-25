@@ -3,20 +3,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStates } from '../redux/usaStatesState';
 import styled from 'styled-components';
 
-const StyledDiv = styled.div`
-    display: flex;
-    justify-content: space-between;
-    max-width: 700px;
-    background-color: black;
-    color: antiquewhite;
+const StyledSection = styled.section`
+    border-radius: 2px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
     margin: 0 auto;
-    padding: 2rem;
+    max-width: 800px;
+    padding: 3rem;
+    text-align: center;
 `;
-
+const StyledBtn = styled.div`
+    background-color: black;
+    border: solid white 1.5px;
+    cursor: pointer;
+    margin: 7px;
+    transition: transform .4s;
+    &:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
+  }
+`;
 const StyledParagraph = styled.p`
-    border-left: solid white 3px;
-    border-right: solid white 3px;
-    padding: .5rem;
+    border-right: solid white 1.5px;
+    color: white;
+    line-height: 0;
 `;
 
 const StatesContainer = () => {
@@ -26,14 +37,16 @@ const StatesContainer = () => {
     useEffect( () => {
         dispatch(getStates());
     },[dispatch]);
-    console.log(states);
+  
   return (
-    <StyledDiv>
+    <StyledSection>
         { states.map( v => {
-            return <StyledParagraph key={v.id}> {v.name} </StyledParagraph>
+            return<StyledBtn>
+                    <StyledParagraph key={v.id}> {v.name} </StyledParagraph>
+                  </StyledBtn>
         }) }
-    </StyledDiv>
-  )
+    </StyledSection>
+  );
 }
 
 export default StatesContainer;
