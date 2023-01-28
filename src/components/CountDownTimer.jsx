@@ -17,7 +17,10 @@ function CountDownTimer() {
   }, [timeLeft]);
 
   return(
-    <div> <BsFillAlarmFill /> <h4> {timeLeft} seconds </h4>  </div>
+    <div> 
+      <BsFillAlarmFill /> 
+      <span> {timeLeft} seconds </span>  
+    </div>
   );
 }
 
