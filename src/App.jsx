@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import Header from "./layout/Header";
 import HomePage from './pages/HomePage';
+import GamePage from "./pages/GamePage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={ <HomePage /> }/>
+        <Route path='/game' element={ <GamePage /> }/>
         <Route path="*" element={ <Navigate to="/" replace /> } />
       </Routes>
     </Router>
