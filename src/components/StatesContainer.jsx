@@ -17,6 +17,7 @@ const StyledBtn = styled.div`
     border: solid white 1.5px;
     cursor: pointer;
     margin: 7px;
+    max-width: 150px;
     transition: transform .4s;
     &:hover {
     -ms-transform: scale(1.1); /* IE 9 */
@@ -28,6 +29,7 @@ const StyledParagraph = styled.p`
     border-right: solid white 1.5px;
     color: white;
     line-height: 0;
+    text-align: center;
 `;
 
 const StatesContainer = () => {
