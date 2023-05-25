@@ -15,10 +15,13 @@ const TimeLeftContainer = styled.div`
 function CountDownTimer() {
   const [timeLeft, setTimeLeft] = useState(20);
   const timeoutRef = useRef(null);
+  const [audio] = useState(new Audio('https://www.soundjay.com/clock/sounds/clock-ticking-2.mp3'));
+  const [playing, setPlaying] = useState(true);
   const isDanger = timeLeft <= 10;
 
   useEffect(() => {
     if (timeLeft > 0) {
+      audio.play();
       timeoutRef.current = setTimeout(() => {
         setTimeLeft(timeLeft - 1);
       }, 1000);
@@ -27,6 +30,13 @@ function CountDownTimer() {
     }
     return () => clearTimeout(timeoutRef.current);
   }, [timeLeft]);
+
+//   useEffect(() => {
+//     audio.loop = true;
+//     playing ? audio.play() : audio.pause();
+//   },
+//   [playing]
+// );
 
   return(
     <StyledContainer $danger={isDanger}>
