@@ -1,9 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { BsFillAlarmFill } from 'react-icons/bs';
+import styled from 'styled-components';
+
+const StyledContainer = styled.div`
+  display: flex;
+  color: ${props => (props.$danger ? "red" : "black")};
+`;
+
+const TimeLeftContainer = styled.div`
+  margin-top: -2px;
+  margin-left: 5px;
+`;
 
 function CountDownTimer() {
   const [timeLeft, setTimeLeft] = useState(20);
   const timeoutRef = useRef(null);
+  const isDanger = timeLeft <= 10;
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -17,10 +29,16 @@ function CountDownTimer() {
   }, [timeLeft]);
 
   return(
-    <div> 
-      <BsFillAlarmFill /> 
-      <span> {timeLeft} seconds </span>  
-    </div>
+    <StyledContainer $danger={isDanger}>
+      <div className="">
+        <BsFillAlarmFill />
+      </div>
+    <TimeLeftContainer>
+      <span>
+        {timeLeft} seconds
+      </span>
+    </TimeLeftContainer>
+  </StyledContainer>
   );
 }
 
