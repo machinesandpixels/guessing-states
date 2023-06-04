@@ -13,7 +13,16 @@ export const usaStatesSlice = createSlice({
   name: 'usaStates',
   initialState: {
     states: [],
+    randomState: null,
     isLoading: false,
+  },
+  reducers: {
+    selectRandomState: (state) => {
+      if (state.states.length > 0) {
+        state.randomState =
+          state.states[Math.floor(Math.random() * state.states.length)];
+      }
+    },
   },
   extraReducers: {
     [getStates.pending]: (state) => {
@@ -29,27 +38,5 @@ export const usaStatesSlice = createSlice({
   }
 });
 
+export const { selectRandomState } = usaStatesSlice.actions;
 export default usaStatesSlice.reducer;
-
-// export const counterSlice = createSlice({
-//   name: "counter",
-//   initialState: {
-//     count: 0
-//   },
-//   reducers: {
-//     increment: (state) => {
-//       state.count += 1;
-//     },
-//     decrement: (state) => {
-//       state.count -= 1;
-//     },
-//     incrementByAmount: (state, action) => {
-//       state.count += action.payload;
-//     }
-//   }
-// });
-
-// // Action creators are generated for each case reducer function
-// export const { increment, decrement, incrementByAmount } = counterSlice.actions;
-
-// export default counterSlice.reducer;

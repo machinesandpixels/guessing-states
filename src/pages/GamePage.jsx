@@ -1,6 +1,7 @@
 import React from 'react';
 import GameScore from '../components/GameScore';
 import CountDownTimer from '../components/CountDownTimer';
+import RandomState from '../components/RandomState';
 import StatesContainer from '../components/StatesContainer';
 import styled from 'styled-components';
 
@@ -17,6 +18,7 @@ const GamePage = () => {
             <GameScore />
             <CountDownTimer />
         </StyledContainer>
+        <RandomState />
         <StatesContainer />
     </div>
   );
