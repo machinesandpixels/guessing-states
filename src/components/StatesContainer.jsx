@@ -42,10 +42,10 @@ const StatesContainer = () => {
   
   return (
     <StyledSection>
-        { states.map( v => {
-            return<StyledBtn>
-                    <StyledParagraph key={v.id}> {v.name} </StyledParagraph>
-                  </StyledBtn>
+        { states.map(({id, name}) => {
+          return<StyledBtn key={id}>
+                  <StyledParagraph> {name} </StyledParagraph>
+                </StyledBtn>
         }) }
     </StyledSection>
   );
