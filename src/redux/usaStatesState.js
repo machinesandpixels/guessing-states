@@ -23,6 +23,10 @@ export const usaStatesSlice = createSlice({
           state.states[Math.floor(Math.random() * state.states.length)];
       }
     },
+    removeState: (state, action) => {
+      state.states = state.states.filter(x => x.name !== action.payload);
+      console.log('RemoveState', action.payload)
+    },
   },
   extraReducers: {
     [getStates.pending]: (state) => {
@@ -38,5 +42,5 @@ export const usaStatesSlice = createSlice({
   }
 });
 
-export const { selectRandomState } = usaStatesSlice.actions;
+export const { selectRandomState, removeState } = usaStatesSlice.actions;
 export default usaStatesSlice.reducer;

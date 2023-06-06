@@ -10,6 +10,10 @@ const StyledContainer = styled.div`
     justify-content: space-around;
     margin: 0 auto;
 `;
+const StyledDiv = styled.div`
+    display: flex;
+    justify-content: center;
+`;
 
 const GamePage = () => {
   return (
@@ -18,7 +22,9 @@ const GamePage = () => {
             <GameScore />
             <CountDownTimer />
         </StyledContainer>
-        <RandomState />
+        <StyledDiv>
+          <RandomState />
+        </StyledDiv>
         <StatesContainer />
     </div>
   );

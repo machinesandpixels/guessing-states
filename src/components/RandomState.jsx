@@ -8,22 +8,18 @@ const RandomState = () => {
     const randomState = useSelector((state) => state.usaStates.randomState);
 
     useEffect(() => {
-        dispatch(getStates());
+      dispatch(getStates());
     },[dispatch]);
 
     useEffect(() => {
-        if (states.length > 0 && randomState === null) {
-          dispatch(selectRandomState());
-        }
-      }, [states, randomState, dispatch]);
-
-    console.log(randomState);
-
+      dispatch(selectRandomState());
+    }, [states, dispatch]);
+  
     return (
             <>
             { randomState !== null ? 
               <div>
-                <h1>{randomState.name}</h1>
+                { states.length > 0 ? <h1>{randomState.name}</h1> : 'You WON!' }
               </div>
                 : 'LOADING' 
               }

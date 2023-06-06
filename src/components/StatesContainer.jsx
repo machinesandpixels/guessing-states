@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStates } from '../redux/usaStatesState';
+import { getStates, selectRandomState, removeState } from '../redux/usaStatesState';
 import styled from 'styled-components';
 
 const StyledSection = styled.section`
@@ -35,18 +35,28 @@ const StyledParagraph = styled.p`
 const StatesContainer = () => {
     const dispatch = useDispatch();
     const states = useSelector(state => state.usaStates.states);
+    const randomState = useSelector((state) => state.usaStates.randomState);
 
     useEffect( () => {
         dispatch(getStates());
     },[dispatch]);
+
+    useEffect(() => {
+      if (states.length > 0 && randomState === null) {
+        dispatch(selectRandomState());
+      }
+    }, [states, randomState, dispatch]);
   
   return (
     <StyledSection>
-        { states.map(({id, name}) => {
-          return<StyledBtn key={id}>
-                  <StyledParagraph> {name} </StyledParagraph>
-                </StyledBtn>
-        }) }
+        {states.map(({id, name}) => {
+          return<StyledBtn key={id}  onClick={() => {
+            if (name === randomState.name){
+              dispatch(removeState(name))}
+              }}>
+                <StyledParagraph>{name}</StyledParagraph>
+              </StyledBtn>
+        })}
     </StyledSection>
   );
 }
