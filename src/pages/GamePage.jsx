@@ -19,8 +19,8 @@ const GamePage = () => {
   return (
     <div>
         <StyledContainer>
-            <GameScore />
-            <CountDownTimer />
+          <GameScore />
+          <CountDownTimer />
         </StyledContainer>
         <StyledDiv>
           <RandomState />

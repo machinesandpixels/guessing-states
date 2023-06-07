@@ -14,6 +14,7 @@ export const usaStatesSlice = createSlice({
   initialState: {
     states: [],
     randomState: null,
+    score: 0,
     isLoading: false,
   },
   reducers: {
@@ -26,6 +27,9 @@ export const usaStatesSlice = createSlice({
     removeState: (state, action) => {
       state.states = state.states.filter(x => x.name !== action.payload);
       console.log('RemoveState', action.payload)
+    },
+    incrementScore: (state) => {
+      state.score += 1;
     },
   },
   extraReducers: {
@@ -42,5 +46,5 @@ export const usaStatesSlice = createSlice({
   }
 });
 
-export const { selectRandomState, removeState } = usaStatesSlice.actions;
+export const { selectRandomState, removeState, incrementScore } = usaStatesSlice.actions;
 export default usaStatesSlice.reducer;
