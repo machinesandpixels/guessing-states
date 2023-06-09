@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStates, selectRandomState, removeState, incrementScore } from '../redux/usaStatesState';
+import { getStates, selectRandomState, removeState, incrementScore, checkStateSelection } from '../redux/usaStatesState';
 import styled from 'styled-components';
 
 const StyledSection = styled.section`
@@ -51,6 +51,9 @@ const StatesContainer = () => {
     <StyledSection>
         {states.map(({id, name}) => {
           return<StyledBtn key={id}  onClick={() => {
+            if (name !== randomState.name){
+              dispatch(checkStateSelection());
+            }
             if (name === randomState.name){
               dispatch(removeState(name));
               dispatch(incrementScore());

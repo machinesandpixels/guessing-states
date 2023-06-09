@@ -15,6 +15,7 @@ export const usaStatesSlice = createSlice({
     states: [],
     randomState: null,
     score: 0,
+    stateSelection: false,
     isLoading: false,
   },
   reducers: {
@@ -31,6 +32,9 @@ export const usaStatesSlice = createSlice({
     incrementScore: (state) => {
       state.score += 1;
     },
+    checkStateSelection: (state) => {
+      state.stateSelection = true;
+    },
   },
   extraReducers: {
     [getStates.pending]: (state) => {
@@ -46,5 +50,5 @@ export const usaStatesSlice = createSlice({
   }
 });
 
-export const { selectRandomState, removeState, incrementScore } = usaStatesSlice.actions;
+export const { selectRandomState, removeState, incrementScore, checkStateSelection } = usaStatesSlice.actions;
 export default usaStatesSlice.reducer;
